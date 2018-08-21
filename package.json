@@ -1,0 +1,20 @@
+{
+  "name": "create-next-example-app",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "docker:build": "docker build -t esi-node-app .",
+    "docker:clean": "docker rm -f esi-node-app || true",
+    "docker:run": "docker run -p 7878:3000 -d --name esi-node-app esi-node-app && npm run docker:logs",
+    "docker:stop": "docker stop esi-node-app",
+    "docker:start": "docker start esi-node-app && npm run docker:logs",
+    "docker:logs": "docker logs -f esi-node-app",
+    "deploy": "npm run docker:build && npm run docker:clean && npm run docker:run"
+  },
+  "dependencies": {
+    "next": "^6.1.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2"
+  }
+}
